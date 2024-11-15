@@ -50,7 +50,7 @@
     "pack": "yarn pack",
     "watch": "chokidar 'themes/**/*.scss' -c 'npm run build:sass && npm run build:autoprefixer'",
     "prepare": "husky",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build:clean && npm run build:sass"
   },
   "files": [
     "dist",
