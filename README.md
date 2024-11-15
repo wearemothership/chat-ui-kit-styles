@@ -24,6 +24,19 @@ npm install @chatscope/chat-ui-kit-styles
 import styles from '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 ```
 
+Default variables can be over-ridden using:
+```
+@use "<path_to_node_modules>/@chatscope/chat-ui-kit-styles/themes/default/variables" with (
+	<variable_to_override>: <value>
+)
+```
+e.g.
+```
+@use "<path_to_node_modules>/@chatscope/chat-ui-kit-styles/themes/default/variables" with (
+	$default-font-family: "tahoma",
+)
+```
+
 For more information please visit [Chat UI Kit React repository](https://github.com/chatscope/chat-ui-kit-react)
 or check our friendly [Storybook](https://chatscope.io/storybook/react/).
 
