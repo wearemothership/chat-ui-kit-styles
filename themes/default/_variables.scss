@@ -592,7 +592,7 @@ $message-group-margin: 0.4em 0 0 0 !default;
 $message-group-header-margin: 0 0 0.2em 0 !default;
 $message-group-footer-margin: 0.2em 0 0 0 !default;
 
-$message-group-avatar-horizontal-margin: 8px;
+$message-group-avatar-horizontal-margin: 8px !default;
 
 $message-group-header-padding: 0 !default;
 $message-group-footer-padding: 0 !default;
@@ -632,7 +632,7 @@ $message-input-content-editor-font-family: $default-font-family !default;
 $message-input-content-editor-container-font-size: 0.94em !default;
 
 // Sizes
-$message-input-max-lines: 4;
+$message-input-max-lines: 4 !default;
 
 // Spacing
 $message-input-placeholder-color: $color-text-disabled !default;
