@@ -1,31 +1,31 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-conversation-header {
+.#{variables.$prefix}-conversation-header {
   
   $class-name: &;
   
   box-sizing: border-box;
-  color: $conversation-header-color;
-  background-color: $conversation-header-bg-color;
-  font-family: $conversation-header-font-family;
-  font-size: $conversation-header-font-size;
+  color: variables.$conversation-header-color;
+  background-color: variables.$conversation-header-bg-color;
+  font-family: variables.$conversation-header-font-family;
+  font-size: variables.$conversation-header-font-size;
   flex-shrink: 0;
   user-select: none;
   //box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.38);
   
-  @include flex-row;
+  @include mixins.flex-row;
   align-items: stretch;
-  border-top: $conversation-header-border-top;
-  border-right: $conversation-header-border-right;
-  border-bottom: $conversation-header-border-bottom;
-  border-left: $conversation-header-border-left;
+  border-top: variables.$conversation-header-border-top;
+  border-right: variables.$conversation-header-border-right;
+  border-bottom: variables.$conversation-header-border-bottom;
+  border-left: variables.$conversation-header-border-left;
   padding: 0.6em 0.9em;
 
   &__back {
     box-sizing: border-box;
     margin-right:0.5em;
-    @include flex-row;
+    @include mixins.flex-row;
     align-items: center;
     cursor: pointer;
     order: 1;
@@ -38,45 +38,45 @@
   
   &__avatar {
     box-sizing: border-box;
-    width: $avatar-md-width;
-    height: $avatar-md-width;
+    width: variables.$avatar-md-width;
+    height: variables.$avatar-md-width;
     margin-right: 1em;
     order: 2;
 
-    > .#{$prefix}-avatar {
-      > .#{$prefix}-status {
-        > .#{$prefix}-status__bullet {
-          border-color: $conversation-header-bg-color;
+    > .#{variables.$prefix}-avatar {
+      > .#{variables.$prefix}-status {
+        > .#{variables.$prefix}-status__bullet {
+          border-color: variables.$conversation-header-bg-color;
         }
       }
     }
 
-    .#{$prefix}-avatar-group {
+    .#{variables.$prefix}-avatar-group {
       padding-right:0 !important;
     }
   }
 
   &__content {
     box-sizing: border-box;
-    @include flex-column;
+    @include mixins.flex-column;
     order: 3;
     flex-grow: 2;
     justify-content: center;
-    min-width: $conversation-header-content-min-width; // Required for ellipsis in child elements
+    min-width: variables.$conversation-header-content-min-width; // Required for ellipsis in child elements
     
     #{$class-name}__user-name {
       box-sizing: border-box;
-      @include text-truncate;
+      @include mixins.text-truncate;
       font-weight: bold;
-      color: $conversation-header-user-name-color;
-      background-color: $conversation-header-user-name-bg-color;
+      color: variables.$conversation-header-user-name-color;
+      background-color: variables.$conversation-header-user-name-bg-color;
     }
 
     #{$class-name}__info {
       box-sizing: border-box;
-      @include text-truncate;
-      color: $conversation-header-info-color;
-      background-color: $conversation-header-info-bg-color;
+      @include mixins.text-truncate;
+      color: variables.$conversation-header-info-color;
+      background-color: variables.$conversation-header-info-bg-color;
       font-weight: normal;
       font-size: 0.9em;
     }
@@ -85,34 +85,34 @@
   
   &__actions {
     box-sizing: border-box;
-    @include flex-row;
+    @include mixins.flex-row;
     align-items: center;
-    color: $conversation-header-actions-color;
-    background-color: $conversation-header-actions-bg-color;
-    margin: $conversation-header-actions-margin;
+    color: variables.$conversation-header-actions-color;
+    background-color: variables.$conversation-header-actions-bg-color;
+    margin: variables.$conversation-header-actions-margin;
     order: 4;
-    .#{$prefix}-button:not(:first-child) {
+    .#{variables.$prefix}-button:not(:first-child) {
       margin-left:0.2em;
     }
     
-    .#{$prefix}-button {
+    .#{variables.$prefix}-button {
       padding:0;
     }
     
-    .#{$prefix}-button.#{$prefix}-button--arrow,
-    .#{$prefix}-button.#{$prefix}-button--info,
-    .#{$prefix}-button.#{$prefix}-button--voicecall,
-    .#{$prefix}-button.#{$prefix}-button--videocall,
-    .#{$prefix}-button.#{$prefix}-button--star,
-    .#{$prefix}-button.#{$prefix}-button--adduser,
-    .#{$prefix}-button.#{$prefix}-button--ellipsis,
-    .#{$prefix}-button.#{$prefix}-button--ellipsis
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--arrow,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--info,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--voicecall,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--videocall,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--star,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--adduser,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--ellipsis,
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--ellipsis
     {
       font-size: 1.4em;
-      color:$conversation-header-action-button-color;
-      background-color: $conversation-header-action-button-bg-color;
+      color:variables.$conversation-header-action-button-color;
+      background-color: variables.$conversation-header-action-button-bg-color;
     }
-    .#{$prefix}-button.#{$prefix}-button--ellipsis {
+    .#{variables.$prefix}-button.#{variables.$prefix}-button--ellipsis {
       font-size: 1.3em;
     }
     

@@ -1,23 +1,23 @@
 @use "sass:math";
-@import "../variables";
+@use "../variables";
 
-.#{$prefix}-loader {
+.#{variables.$prefix}-loader {
   box-sizing: border-box;
   display:inline-flex;
   position:relative;
   font-size:1em;
-  width:$loader-width;
-  height: $loader-height;
-  color: $loader-color;
-  background-color: $loader-bg-color;
+  width:variables.$loader-width;
+  height: variables.$loader-height;
+  color: variables.$loader-color;
+  background-color: variables.$loader-bg-color;
   
   &::before,
   &::after {
     box-sizing: border-box;
     display:block;
-    width: $loader-width;
-    height: $loader-height;
-    margin: 0 0 0 ( math.div($loader-width, 2) * -1 ); // Center horizontally
+    width: variables.$loader-width;
+    height: variables.$loader-height;
+    margin: 0 0 0 ( math.div(variables.$loader-width, 2) * -1 ); // Center horizontally
   }
   
   // Background circle
@@ -27,9 +27,9 @@
     top: 0;
     left: 50%;
     border-radius:50%;
-    border-color: $loader-spinner-bg-color;
+    border-color: variables.$loader-spinner-bg-color;
     border-style: solid;
-    border-width: $loader-border-width;
+    border-width: variables.$loader-border-width;
     //box-shadow: 0 0 2px $loader-spinner-bg-color;
   }
   
@@ -42,16 +42,16 @@
     animation: loader-default .6s linear;
     animation-iteration-count: infinite;
     border-radius: 50%;
-    border-color: $loader-spinner-color  transparent transparent transparent;
+    border-color: variables.$loader-spinner-color  transparent transparent transparent;
     border-style: solid;
-    border-width: $loader-border-width;
+    border-width: variables.$loader-border-width;
     box-shadow: 0 0 0 transparent;
   }
   
   &--content {
     width:auto;
     height:auto;
-    padding-top: $loader-height + 0.8em;
+    padding-top: variables.$loader-height + 0.8em;
   }
   
   // Variant or future use

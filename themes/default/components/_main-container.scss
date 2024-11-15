@@ -1,66 +1,67 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "sass:map";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-main-container {
+.#{variables.$prefix}-main-container {
   position:relative;
-  @include flex-row;
+  @include mixins.flex-row;
   height: 100%;
   overflow: auto;
-  border: $main-container-border;
+  border: variables.$main-container-border;
   box-sizing: border-box;
-  color: $main-container-color;
-  background-color: $main-container-bg-color;
-  font-size: $main-container-font-size;
+  color: variables.$main-container-color;
+  background-color: variables.$main-container-bg-color;
+  font-size: variables.$main-container-font-size;
   
-  & > .#{$prefix}-conversation-list {
+  & > .#{variables.$prefix}-conversation-list {
     order: 0;
     height: 100%;
-    flex-basis: $main-container-conversation-list-flex-basis;
-    border-top: $main-container-conversation-list-border-top;
-    border-right: $main-container-conversation-list-border-right;
-    border-bottom: $main-container-conversation-list-border-bottom;
-    border-left: $main-container-conversation-list-border-left;
+    flex-basis: variables.$main-container-conversation-list-flex-basis;
+    border-top: variables.$main-container-conversation-list-border-top;
+    border-right: variables.$main-container-conversation-list-border-right;
+    border-bottom: variables.$main-container-conversation-list-border-bottom;
+    border-left: variables.$main-container-conversation-list-border-left;
     box-shadow: 2px 0 5px -2px rgba(0,0,0,0.38);
     /* Hmm without this, box shadow is cut at bottom */
     z-index:2;
   }
 
-  & > .#{$prefix}-sidebar.#{$prefix}-sidebar--left {
+  & > .#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--left {
     order:0;
     height:100%;
-    max-width:$main-container-sidebar-left-max-width;
+    max-width:variables.$main-container-sidebar-left-max-width;
     flex-basis: 35%;
-    border-right: $main-container-conversation-list-border-right;
+    border-right: variables.$main-container-conversation-list-border-right;
     //box-shadow: 2px 0 5px -2px rgba(0,0,0,0.38);
     /* Hmm without this, box shadow is cut at bottom */
     z-index:2;
   }
 
-  & > .#{$prefix}-sidebar.#{$prefix}-sidebar--right {
+  & > .#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--right {
     flex-basis: 25%;
-    min-width: $main-container-sidebar-right-min-width;
-    max-width: $main-container-sidebar-right-max-width;
+    min-width: variables.$main-container-sidebar-right-min-width;
+    max-width: variables.$main-container-sidebar-right-max-width;
 
-    border-top: $main-container-sidebar-right-border-top;
-    border-right: $main-container-sidebar-right-border-right;
-    border-bottom: $main-container-sidebar-right-border-bottom;
-    border-left: $main-container-sidebar-right-border-left;
+    border-top: variables.$main-container-sidebar-right-border-top;
+    border-right: variables.$main-container-sidebar-right-border-right;
+    border-bottom: variables.$main-container-sidebar-right-border-bottom;
+    border-left: variables.$main-container-sidebar-right-border-left;
     
   }
   
-  & > .#{$prefix}-sidebar.#{$prefix}-sidebar--left .#{$prefix}-search {
+  & > .#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--left .#{variables.$prefix}-search {
     margin:0.5em;
   }
   
-  & .#{$prefix}-chat-container {
+  & .#{variables.$prefix}-chat-container {
     order:1;
     z-index:1;
     flex-grow: 1;
     flex-basis: 65%;
-    border-right: $main-container-chat-container-border-right;
+    border-right: variables.$main-container-chat-container-border-right;
   }
   
-  & .#{$prefix}-sidebar {
+  & .#{variables.$prefix}-sidebar {
     order:2;
     height:100%;
     //box-shadow: -2px 0px 5px -2px rgba(0,0,0,0.38);
@@ -68,18 +69,18 @@
   }
 
   // Clear expansion panel border in sidebar
-  & .#{$prefix}-sidebar .#{$prefix}-expansion-panel {
+  & .#{variables.$prefix}-sidebar .#{variables.$prefix}-expansion-panel {
     border-left:0;
     border-top:0;
     border-right:0;
   }
 
   // 3 because of scrollbar divs
-  & .#{$prefix}-sidebar .#{$prefix}-expansion-panel:nth-last-child(3) {
+  & .#{variables.$prefix}-sidebar .#{variables.$prefix}-expansion-panel:nth-last-child(3) {
     border-bottom: 0;
   }
   
-  & .#{$prefix}-conversation-header {
+  & .#{variables.$prefix}-conversation-header {
     z-index: 1;
   }
 
@@ -88,15 +89,15 @@
   /// Responsive
   &--responsive {
 
-    .#{$prefix}-chat-container {
+    .#{variables.$prefix}-chat-container {
       
-      .#{$prefix}-conversation-header {
-        .#{$prefix}-conversation-header__back {
+      .#{variables.$prefix}-conversation-header {
+        .#{variables.$prefix}-conversation-header__back {
           display: none;
         }
   
-        .#{$prefix}-conversation-header__actions {
-          .#{$prefix}-button--info {
+        .#{variables.$prefix}-conversation-header__actions {
+          .#{variables.$prefix}-button--info {
             display: none;
           }
         }
@@ -104,32 +105,32 @@
       }
     }
     
-    @media( max-width: map-get($grid-breakpoints, md) ) {
+    @media( max-width: map.get(variables.$grid-breakpoints, md) ) {
       
-      min-width: calc( 1.6em + 40px + #{$chat-container-min-width} );  // Horizontal padding from conversation-list plus avatar width plus ChatContainer min-width
+      min-width: calc( 1.6em + 40px + #{variables.$chat-container-min-width} );  // Horizontal padding from conversation-list plus avatar width plus ChatContainer min-width
       
-      .#{$prefix}-search {
+      .#{variables.$prefix}-search {
         display:none;
       }
   
-      > .#{$prefix}-sidebar.#{$prefix}-sidebar--left {
+      > .#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--left {
         flex-basis: calc(1.6em + 40px); // Horizontal padding from conversation-list plus avatar width
         min-width: calc(1.6em + 40px);
       }
   
-      >.#{$prefix}-sidebar.#{$prefix}-sidebar--right {
+      >.#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--right {
         display: none;
       }
       
-      > .#{$prefix}-conversation-list { // Only if conversation-list is direct child of main-container because main-container and conversation-list have different flex-direction
+      > .#{variables.$prefix}-conversation-list { // Only if conversation-list is direct child of main-container because main-container and conversation-list have different flex-direction
         flex-basis: calc(1.6em + 40px); // Horizontal padding from conversation-list plus avatar width
       }
   
-      .#{$prefix}-conversation-list,
-      .#{$prefix}-sidebar .#{$prefix}-conversation-list {
+      .#{variables.$prefix}-conversation-list,
+      .#{variables.$prefix}-sidebar .#{variables.$prefix}-conversation-list {
   
-        .#{$prefix}-conversation {
-          > .#{$prefix}-avatar {
+        .#{variables.$prefix}-conversation {
+          > .#{variables.$prefix}-avatar {
             margin-right:0; // Reset right margin
           }
   
@@ -153,10 +154,10 @@
         }
       }
 
-      .#{$prefix}-conversation-header {
+      .#{variables.$prefix}-conversation-header {
 
-        .#{$prefix}-conversation-header__actions {
-          .#{$prefix}-button--info {
+        .#{variables.$prefix}-conversation-header__actions {
+          .#{variables.$prefix}-button--info {
             display: flex;
           }
         }
@@ -165,23 +166,23 @@
       
     }
   
-    @media( max-width: map-get($grid-breakpoints, sm) ) {
+    @media( max-width: map.get(variables.$grid-breakpoints, sm) ) {
 
       min-width: auto;
       
-      > .#{$prefix}-sidebar.#{$prefix}-sidebar--left {
+      > .#{variables.$prefix}-sidebar.#{variables.$prefix}-sidebar--left {
         display:none;
       }
 
 
-      .#{$prefix}-chat-container {
+      .#{variables.$prefix}-chat-container {
         // Show back arrow
-        .#{$prefix}-conversation-header {
-          .#{$prefix}-conversation-header__back {
+        .#{variables.$prefix}-conversation-header {
+          .#{variables.$prefix}-conversation-header__back {
             display: flex;
           }
   
-          .#{$prefix}-conversation-header__info {
+          .#{variables.$prefix}-conversation-header__info {
             
           }
           

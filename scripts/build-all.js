@@ -1,8 +1,7 @@
 // Build all themes
-
 const fs = require("fs");
 const path = require("path");
-var sass = require('sass');
+const sass = require("sass-embedded");
 
 function writeOutput(error, result, outputFile ) {
     
@@ -42,18 +41,6 @@ const getAllDirs = (dirPath) =>  fs.readdirSync(dirPath).map( dir => ({ name: di
 
 const dirs = getAllDirs("./themes");
 
-const sassOptions = {
-    indentType:  "space",
-    indentWidth: 2,
-    sourceMap: true,
-    sourceMapContents: true,
-};
-
-const sassCompressedOptions = {
-    outputStyle: "compressed",
-    ...sassOptions
-};
-
 dirs.forEach( dir => {
     
     const distDirectory = `./dist/${dir.name}`;
@@ -66,17 +53,26 @@ dirs.forEach( dir => {
     }
     
     // Non compressed output
-    sass.render({
-        file: path.join( dir.path, "main.scss" ),
-        outFile: outputFileName, // Required for sourceMap 
-        ...sassOptions
-    } , (error, result ) => writeOutput(error, result, outputFileName ) );
+    let result = sass.compile(
+		path.join( dir.path, "main.scss" ),
+        {
+			sourceMap: true,
+			sourceMapIncludeSources: true,
+			style: "expanded"
+    	}
+	);
+
+	writeOutput(undefined, result, outputFileName);
 
     // Compressed output
-    sass.render({
-        file: path.join( dir.path, "main.scss" ),
-        outFile: outputMinFileName, // Required for sourceMap
-        ...sassCompressedOptions
-    } , ( error, result ) => writeOutput(error, result, outputMinFileName ) );
-    
+    result = sass.compile(
+		path.join( dir.path, "main.scss" ),
+        {
+			sourceMap: true,
+			sourceMapIncludeSources: true,
+			style: "compressed"
+    	}
+	);
+
+	writeOutput(undefined, result, outputMinFileName);
 });

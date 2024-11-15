@@ -1,9 +1,10 @@
-@import "../variables";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-overlay {
+.#{variables.$prefix}-overlay {
 
   box-sizing: border-box;
-  @include flex-row;
+  @include mixins.flex-row;
   justify-content: center;
   align-items: center;
   position:absolute;
@@ -22,7 +23,7 @@
   &::before {
     box-sizing: border-box;
     content: "";
-    background-color: $overlay-bg-color;
+    background-color: variables.$overlay-bg-color;
     position: absolute;
     top: 0;
     left: 0;

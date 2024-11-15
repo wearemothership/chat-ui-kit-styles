@@ -1,0 +1,40 @@
+{
+	"extends": ["stylelint-config-standard-scss"],
+	"plugins": ["stylelint-scss"],
+	"rules": {
+		"indentation": "tab",
+		"value-keyword-case": null,
+		"color-named": [
+			"never",
+			{
+			  "message": "Use atomic color classes or SCSS variables instead of a bespoke color."
+			}
+		],
+		"color-no-hex": [
+			true,
+			{
+			  "message": "Use atomic color classes or SCSS variables instead of a bespoke color."
+			}
+		],
+		"property-blacklist": [
+			[
+			   "z-index"
+			],
+			{
+			  "message": "Instead of using z-index, re-structure HTML to use native browser stacking."
+			}
+		],
+		"function-blacklist": [
+			[
+			  "rgba",
+			  "hsla",
+			  "hsl",
+			  "rgb",
+			  "calc"
+			],
+			{
+			  "message": "Use SCSS variables for colours and calcs. Do not use alpha channel functions (rgba, hsla) to 'lighten' a color."
+			}
+		]
+	}
+}

@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 @mixin reset-spacing {
   margin: 0;
   padding: 0;
@@ -38,65 +41,65 @@
 // Mixins for status size
 // 
 
-$bullet-class: #{$prefix}-status__bullet;
+$bullet-class: #{variables.$prefix}-status__bullet;
 
 @mixin status-xs {
-  font-size: $status-xs-fontsize;
-  width: $status-xs-width;
-  height: $status-xs-width;
+  font-size: variables.$status-xs-fontsize;
+  width: variables.$status-xs-width;
+  height: variables.$status-xs-width;
   .#{$bullet-class} {
-    width: $status-xs-width;
-    height: $status-xs-width;
+    width: variables.$status-xs-width;
+    height: variables.$status-xs-width;
   }
 }
 
 @mixin status-sm {
-  font-size: $status-sm-fontsize;
+  font-size: variables.$status-sm-fontsize;
   .#{$bullet-class} {
-    width: $status-sm-width;
-    height: $status-sm-width;
+    width: variables.$status-sm-width;
+    height: variables.$status-sm-width;
   }
 }
 
 @mixin status-md {
-  font-size: $status-md-fontsize;
-  width: $status-md-width;
-  height: $status-md-width;
+  font-size: variables.$status-md-fontsize;
+  width: variables.$status-md-width;
+  height: variables.$status-md-width;
   .#{$bullet-class} {
-    width: $status-md-width;
-    height: $status-md-width;
+    width: variables.$status-md-width;
+    height: variables.$status-md-width;
   }
 }
 
 @mixin status-lg {
-  font-size: $status-lg-fontsize;
-  width: $status-lg-width;
-  height: $status-lg-width;
+  font-size: variables.$status-lg-fontsize;
+  width: variables.$status-lg-width;
+  height: variables.$status-lg-width;
   .#{$bullet-class} {
-    width: $status-lg-width;
-    height: $status-lg-width;
+    width: variables.$status-lg-width;
+    height: variables.$status-lg-width;
   }
 }
 
 // Tablica z rozmiarami klucz wartość
 $status-sizes: (
-        "xs": $status-xs-width,
-        "sm": $status-sm-width,
-        "md": $status-md-width,
-        "lg": $status-lg-width
+        "xs": variables.$status-xs-width,
+        "sm": variables.$status-sm-width,
+        "md": variables.$status-md-width,
+        "lg": variables.$status-lg-width
 );
 
 $status-font-sizes: (
-        "xs": $status-xs-fontsize,
-        "sm": $status-sm-fontsize,
-        "md": $status-md-fontsize,
-        "lg": $status-lg-fontsize
+        "xs": variables.$status-xs-fontsize,
+        "sm": variables.$status-sm-fontsize,
+        "md": variables.$status-md-fontsize,
+        "lg": variables.$status-lg-fontsize
 );
 
 @mixin status-size($size, $border-width:0, $named:false) {
-  $element-width: map_get($status-sizes, $size) + 2*$border-width;
+  $element-width: map.get($status-sizes, $size) + 2*$border-width;
   $bullet-width: $element-width - 2*$border-width;
-  font-size: map_get($status-font-sizes, $size);
+  font-size: map.get($status-font-sizes, $size);
   
   @if ( $named == false ) {
     width: $element-width;

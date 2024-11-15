@@ -1,6 +1,6 @@
-@import "../variables";
+@use "../variables";
 
-.#{$prefix}-button {
+.#{variables.$prefix}-button {
   
   // Local alias
   $button-class: &;
@@ -9,22 +9,22 @@
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  color: $button-color;
-  background-color: $button-bg-color;
+  color: variables.$button-color;
+  background-color: variables.$button-bg-color;
   border: none;
-  border-radius: $button-border-radius;
-  margin: $button-margin;
-  padding: $button-padding;
+  border-radius: variables.$button-border-radius;
+  margin: variables.$button-margin;
+  padding: variables.$button-padding;
   outline: none;
-  font-size: $button-font-size;
-  line-height: $button-line-height;
+  font-size: variables.$button-font-size;
+  line-height: variables.$button-line-height;
 
   &:focus {
     outline:none;
   }
   
   &:disabled {
-    opacity: $button-disabled-opacity;
+    opacity: variables.$button-disabled-opacity;
   }
   
   &:not(:disabled) {
@@ -32,11 +32,11 @@
   }
 
   &#{$button-class}--border {
-    border: $button-border;  
+    border: variables.$button-border;  
   }
   
   &:hover:not(:disabled) {
-    opacity: $button-hover-opacity;
+    opacity: variables.$button-hover-opacity;
   }
   
   &#{$button-class}--right {
@@ -52,48 +52,48 @@
   }
 
   &--adduser {
-    color: $button-adduser-color;
-    background-color: $button-adduser-bg-color;
+    color: variables.$button-adduser-color;
+    background-color: variables.$button-adduser-bg-color;
   }
   
   &--arrow {
-    color: $button-arrow-color;
-    background-color: $button-arrow-bg-color;
+    color: variables.$button-arrow-color;
+    background-color: variables.$button-arrow-bg-color;
   }
 
   &--ellipsis {
-    color: $button-ellipis-color;
-    background-color: $button-ellipis-bg-color;
+    color: variables.$button-ellipis-color;
+    background-color: variables.$button-ellipis-bg-color;
   }
   
   &--info {
-    color: $button-info-color;
-    background-color: $button-info-bg-color;
+    color: variables.$button-info-color;
+    background-color: variables.$button-info-bg-color;
   }
 
   &--star {
-    color: $button-star-color;
-    background-color: $button-star-bg-color;
+    color: variables.$button-star-color;
+    background-color: variables.$button-star-bg-color;
   }
 
   &--videocall {
-    color: $button-videocall-color;
-    background-color: $button-videocall-bg-color;
+    color: variables.$button-videocall-color;
+    background-color: variables.$button-videocall-bg-color;
   }
   
   &--voicecall {
-    color: $button-voicecall-color;
-    background-color: $button-voicecall-bg-color;
+    color: variables.$button-voicecall-color;
+    background-color: variables.$button-voicecall-bg-color;
   }
 
   &--send {
-    color: $button-send-color;
-    background-color: $button-send-bg-color;
+    color: variables.$button-send-color;
+    background-color: variables.$button-send-bg-color;
   }
 
   &--attachment {
-    color: $button-attachment-color;
-    background-color: $button-attachment-bg-color;
+    color: variables.$button-attachment-color;
+    background-color: variables.$button-attachment-bg-color;
   }
   
 }

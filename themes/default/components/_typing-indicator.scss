@@ -1,32 +1,32 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-typing-indicator {
+.#{variables.$prefix}-typing-indicator {
   box-sizing: content-box;
-  font-size: $typing-indicator-font-size;
-  font-family: $typing-indicator-font-family;
-  @include flex-row;
+  font-size: variables.$typing-indicator-font-size;
+  font-family: variables.$typing-indicator-font-family;
+  @include mixins.flex-row;
   align-items: stretch;
   
   &__indicator {
     box-sizing: inherit;
-    background-color: $typing-indicator-indicator-bg-color;
-    @include flex-row;
+    background-color: variables.$typing-indicator-indicator-bg-color;
+    @include mixins.flex-row;
     align-items: center;
   }
 
   &__dot {
     box-sizing: inherit;
-    animation: #{$prefix}-typing-indicator__typing-animation 1.5s infinite ease-in-out;
+    animation: #{variables.$prefix}-typing-indicator__typing-animation 1.5s infinite ease-in-out;
     border-radius: 100%;
     display: inline-block;
-    height: $typing-indicator-dot-size;
-    width: $typing-indicator-dot-size;
-    background-color: $typing-indicator-dot-bg-color;
+    height: variables.$typing-indicator-dot-size;
+    width: variables.$typing-indicator-dot-size;
+    background-color: variables.$typing-indicator-dot-bg-color;
   }
 
   &__dot:not(:last-child) {
-    margin-right: $typing-indicator-dot-spacing;
+    margin-right: variables.$typing-indicator-dot-spacing;
   }
 
   &__dot:nth-child(1) {
@@ -41,14 +41,14 @@
 
   &__text {
     box-sizing: inherit;
-    @include text-truncate;
-    color: $typing-indicator-text-color;
-    background-color: $typing-indicator-text-bg-color;
-    margin: $typing-indicator-text-margin;
+    @include mixins.text-truncate;
+    color: variables.$typing-indicator-text-color;
+    background-color: variables.$typing-indicator-text-bg-color;
+    margin: variables.$typing-indicator-text-margin;
     user-select: none;
   }
 
-  @keyframes #{$prefix}-typing-indicator__typing-animation {
+  @keyframes #{variables.$prefix}-typing-indicator__typing-animation {
     0% {
       transform: translateY(0px);
     }

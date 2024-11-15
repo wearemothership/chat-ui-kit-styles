@@ -1,7 +1,8 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "sass:color";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-status {
+.#{variables.$prefix}-status {
 
   box-sizing: border-box;
   $status-class: &;
@@ -9,15 +10,15 @@
   $name-class: #{$status-class}__name;
   
   position:relative;
-  @include flex-row;
+  @include mixins.flex-row;
   align-items: center;
   flex-wrap: nowrap;
-  font-size: $status-md-fontsize;
+  font-size: variables.$status-md-fontsize;
   
   #{$bullet-class} {
     box-sizing: content-box;
-    width: $status-md-width;
-    height: $status-md-width;
+    width: variables.$status-md-width;
+    height: variables.$status-md-width;
     border-radius: 50%;
     position: relative;
 
@@ -29,8 +30,8 @@
   }
   
   &--selected {
-    color: $status-selected-color;
-    background-color: $status-selected-bg-color;
+    color: variables.$status-selected-color;
+    background-color: variables.$status-selected-bg-color;
   }
   
   &--named {
@@ -39,11 +40,11 @@
   }
   
   &__name {
-    margin: $status-name-margin;
+    margin: variables.$status-name-margin;
     line-height: 1.5;
   }
   
-  @at-root .#{$prefix}-avatar:hover #{$bullet-class}:before,
+  @at-root .#{variables.$prefix}-avatar:hover #{$bullet-class}:before,
   &:hover #{$bullet-class}:before {
     box-sizing: border-box;
     content: "";
@@ -56,6 +57,7 @@
     filter: blur(0);
     height: 80%;
     width: 40%;
+	transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
     background: radial-gradient(
                     circle at 130% 130%,
                     rgba(255, 255, 255, 0) 0,
@@ -65,11 +67,9 @@
                     rgba(255, 255, 255, 0) 60%,
                     rgba(255, 255, 255, 0) 100%
     );
-
-    transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
   }
   
-  @at-root .#{$prefix}-avatar:hover #{$bullet-class}:after, // For hover on parent avatar
+  @at-root .#{variables.$prefix}-avatar:hover #{$bullet-class}:after, // For hover on parent avatar
   &:hover #{$bullet-class}:after {
     box-sizing: border-box;
     content: "";
@@ -82,7 +82,7 @@
     filter: blur(1px);
     z-index: 2;
     transform: rotateZ(-30deg);
-
+	animation: #{variables.$prefix}-bubble-anim 2s ease-out infinite;
     display: block;
     background: radial-gradient(
                     circle at 50% 80%,
@@ -92,9 +92,6 @@
                     white 84%,
                     rgba(255, 255, 255, 0) 100%
     );
-    
-
-    animation: #{$prefix}-bubble-anim 2s ease-out infinite;
   }
   
   
@@ -103,13 +100,13 @@
     #{$bullet-class} {
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-available-color, 10),
-                      $status-available-color
+                      color.adjust(variables.$status-available-color, $lightness: 10%),
+                      variables.$status-available-color
       );
     }
     
     #{$name-class} {
-      color: $status-available-name-color;
+      color: variables.$status-available-name-color;
     }
     
   }
@@ -118,13 +115,13 @@
     #{$bullet-class} {
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-unavailable-color, 25),
-                      $status-unavailable-color
+                      color.adjust(variables.$status-unavailable-color, $lightness: 25%),
+                      variables.$status-unavailable-color
       );
     }
 
     #{$name-class} {
-      color: $status-unavailable-name-color;
+      color: variables.$status-unavailable-name-color;
     }
     
   }
@@ -134,13 +131,13 @@
     #{$bullet-class} {
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-away-color, 35),
-                      $status-away-color
+                      color.adjust(variables.$status-away-color, $lightness: 35%),
+                      variables.$status-away-color
       );
     }
 
     #{$name-class} {
-      color: $status-away-name-color;
+      color: variables.$status-away-name-color;
     }
     
   }
@@ -148,32 +145,32 @@
   &--dnd {
 
     #{$bullet-class} {
-      background-color: $status-dnd-color;
+      background-color: variables.$status-dnd-color;
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-dnd-color, 30),
-                      $status-dnd-color
+                      color.adjust(variables.$status-dnd-color, $lightness: 30%),
+                      variables.$status-dnd-color
       );
     }
     
     #{$name-class} {
-      color: $status-dnd-name-color;
+      color: variables.$status-dnd-name-color;
     }
     
   }
 
   &--invisible {
     #{$bullet-class} {
-      background-color: $status-invisible-color;
+      background-color: variables.$status-invisible-color;
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-invisible-color, 25),
-                      $status-invisible-color
+                      color.adjust(variables.$status-invisible-color, $lightness: 25%),
+                      variables.$status-invisible-color
       );
     }
 
     #{$name-class} {
-      color: $status-invisible-name-color;
+      color: variables.$status-invisible-name-color;
     }
   }
   
@@ -182,45 +179,45 @@
     #{$bullet-class} {
       background: radial-gradient(
                       circle at 3px 3px,
-                      lighten($status-eager-color, 40),
-                      $status-eager-color
+                      color.adjust(variables.$status-eager-color, $lightness: 40%),
+                      variables.$status-eager-color
       );
     }
 
     #{$name-class} {
-      color: $status-eager-name-color;
+      color: variables.$status-eager-name-color;
     }
     
   }
   
   // Sized
   &--xs:not(&--named) {
-    @include status-size("xs");
+    @include mixins.status-size("xs");
   }
 
   &--sm:not(&--named) {
-    @include status-size("sm");
+    @include mixins.status-size("sm");
   }
 
   &--md:not(&--named) {
-    @include status-size("md");
+    @include mixins.status-size("md");
   }
 
   &--lg:not(&--named) {
-    @include status-size("lg");
+    @include mixins.status-size("lg");
   }
 
   &--fluid {
-    width: $status-fluid-width;
-    height: $status-fluid-width;
+    width: variables.$status-fluid-width;
+    height: variables.$status-fluid-width;
     #{$bullet-class} {
-      width: $status-fluid-width;
-      min-width: $status-fluid-width;
-      height: $status-fluid-width;
+      width: variables.$status-fluid-width;
+      min-width: variables.$status-fluid-width;
+      height: variables.$status-fluid-width;
     }
   }
   
-  @keyframes #{$prefix}-bubble-anim {
+  @keyframes #{variables.$prefix}-bubble-anim {
     0% {
       transform: scale(1);
     }
