@@ -24,7 +24,7 @@ $grid-breakpoints: (
 // Default font family
 //
 
-$default-font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+$default-font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif !default;
 
 // Colors
 //
@@ -45,7 +45,7 @@ $color-secondary-dark: #64D3D3 !default;
 $color-text: rgba(0, 0, 0, .87) !default; // #212121
 $color-text-medium: rgba(0, 0, 0, .60) !default; // #666666
 $color-text-disabled: rgba(0, 0, 0, .38) !default; // #9e9e9e
-$color-text-inverted: color.invert($color-text); 
+$color-text-inverted: color.invert($color-text) !default; 
 
 // Base colors
 //
