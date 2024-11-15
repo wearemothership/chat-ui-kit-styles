@@ -1,4 +1,4 @@
-@import "../variables";
+@use "../variables";
 
 // Container style
 .ps {
@@ -60,13 +60,13 @@
 .ps .ps__rail-x.ps--clicking,
 .ps .ps__rail-y.ps--clicking {
   background-color: #eee;
-  background-color: $color-primary-light;
+  background-color: variables.$color-primary-light;
   opacity: 0.9;
 }
 
 // Scrollbar thumb styles
 .ps__thumb-x {
-  background-color: $color-primary-dark;
+  background-color: variables.$color-primary-dark;
   border-radius: 6px;
   transition: background-color .2s linear, height .2s ease-in-out;
   -webkit-transition: background-color .2s linear, height .2s ease-in-out;
@@ -78,7 +78,7 @@
 }
 
 .ps__thumb-y {
-  background-color: $color-primary;
+  background-color: variables.$color-primary;
   border-radius: 6px;
   transition: background-color .2s linear, width .2s ease-in-out;
   -webkit-transition: background-color .2s linear, width .2s ease-in-out;
@@ -92,14 +92,14 @@
 .ps__rail-x:hover > .ps__thumb-x,
 .ps__rail-x:focus > .ps__thumb-x,
 .ps__rail-x.ps--clicking .ps__thumb-x {
-  background-color: $color-primary;
+  background-color: variables.$color-primary;
   height: 11px;
 }
 
 .ps__rail-y:hover > .ps__thumb-y,
 .ps__rail-y:focus > .ps__thumb-y,
 .ps__rail-y.ps--clicking .ps__thumb-y {
-  background-color: $color-primary;
+  background-color: variables.$color-primary;
   width: 11px;
 }
 

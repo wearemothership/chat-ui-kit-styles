@@ -1,13 +1,13 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-avatar {
+.#{variables.$prefix}-avatar {
   
   $avatar-class: &;
   
   position: relative;
-  width: $avatar-md-width;
-  height: $avatar-md-width;
+  width: variables.$avatar-md-width;
+  height: variables.$avatar-md-width;
   border-radius: 50%;
   box-sizing: border-box;
   
@@ -25,38 +25,38 @@
   }
 
   &#{&}--xs {
-    width: $avatar-xs-width;
-    height: $avatar-xs-width;
-    min-width: $avatar-xs-width;;
-    min-height: $avatar-xs-width;
+    width: variables.$avatar-xs-width;
+    height: variables.$avatar-xs-width;
+    min-width: variables.$avatar-xs-width;;
+    min-height: variables.$avatar-xs-width;
   }
 
   &#{&}--sm {
-    width: $avatar-sm-width;
-    height: $avatar-sm-width;
-    min-width: $avatar-sm-width;;
-    min-height: $avatar-sm-width;
+    width: variables.$avatar-sm-width;
+    height: variables.$avatar-sm-width;
+    min-width: variables.$avatar-sm-width;;
+    min-height: variables.$avatar-sm-width;
   }
   
   &#{&}--md
   {
-    width: $avatar-md-width;
-    height: $avatar-md-width;
-    min-width: $avatar-md-width;;
-    min-height: $avatar-md-width;
+    width: variables.$avatar-md-width;
+    height: variables.$avatar-md-width;
+    min-width: variables.$avatar-md-width;;
+    min-height: variables.$avatar-md-width;
   }
 
   &#{&}--lg {
-    width: $avatar-lg-width;
-    height: $avatar-lg-width;
-    min-width: $avatar-lg-width;;
-    min-height: $avatar-lg-width;
+    width: variables.$avatar-lg-width;
+    height: variables.$avatar-lg-width;
+    min-width: variables.$avatar-lg-width;;
+    min-height: variables.$avatar-lg-width;
   }
   
     &#{&}--fluid {
-    width: $avatar-fluid-width;
-    height: $avatar-fluid-width;
-    .#{$prefix}-status {
+    width: variables.$avatar-fluid-width;
+    height: variables.$avatar-fluid-width;
+    .#{variables.$prefix}-status {
       right: 5%;
       width: 22%;
       height: 22%
@@ -64,54 +64,48 @@
   }
   
   // Status position and size
-  & .#{$prefix}-status {
+  & .#{variables.$prefix}-status {
     box-sizing: border-box;
     position: absolute;
     right:-1px;
     bottom: 3%;
-    
+    $status-class: #{variables.$prefix}-status;
+    $bullet-class: #{variables.$prefix}-status__bullet;
+
     &__bullet  {
       box-sizing: content-box;
       border: solid 2px #fff;
     }
 
-    $status-class: #{$prefix}-status;
-    $bullet-class: #{$prefix}-status__bullet;
+    
     
     &--xs,
     &--xs:not(.#{$status-class}--named) {
-      
-      @include status-size("xs", 1);
       right: 0;
       bottom: 0;
-      
+
+      @include mixins.status-size("xs", 1);      
     }
 
     &--sm,
     &--sm:not(.#{$status-class}--named) {
-      
-      @include status-size("sm", 2);
-      
       right: -3px;
       bottom: -1px;
+
+      @include mixins.status-size("sm", 2);
     }
     
     &--md,
     &--md:not(.#{$status-class}--named) {
-      @include status-size("md", 2);
+      @include mixins.status-size("md", 2);
     }
 
     &--lg,  
     &--lg:not(.#{$status-class}--named) {
-
-      @include status-size("lg", 2);
       bottom:4%;
-      
+
+      @include mixins.status-size("lg", 2);
     }
-    
-  }
-  
-  &#{$avatar-class}--active {
     
   }
 }

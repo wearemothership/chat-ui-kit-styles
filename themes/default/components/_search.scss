@@ -1,40 +1,40 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-search {
+.#{variables.$prefix}-search {
 
   box-sizing: border-box;
-  @include flex-row;
-  @include reset-spacing;
-  background-color: $search-bg-color;
+  @include mixins.flex-row;
+  @include mixins.reset-spacing;
+  background-color: variables.$search-bg-color;
   align-items: center;
   position: relative;
-  border-radius: $search-border-radius;
+  border-radius: variables.$search-border-radius;
   padding: 0.6em 0.9em;
-  font-size: $search-font-size;
-  font-family: $search-font-family;
+  font-size: variables.$search-font-size;
+  font-family: variables.$search-font-family;
   
   &__input {
     box-sizing: border-box;
     order:1;
-    color: $search-color;
+    color: variables.$search-color;
     border:none;
     width:100%;
     min-width: 0; // FF fix
     outline:0;
     margin-right:0.5em;
-    background-color:$search-input-bg-color;
-    font-size: $search-input-font-size;
-    font-family: $search-input-font-family;
+    background-color:variables.$search-input-bg-color;
+    font-size: variables.$search-input-font-size;
+    font-family: variables.$search-input-font-family;
   }
 
   &__input:disabled {
-    color: $search-disabled-color;
-    background-color:$search-input-disabled-bg-color;
+    color: variables.$search-disabled-color;
+    background-color:variables.$search-input-disabled-bg-color;
   }
 
   &__input::placeholder {
-    color: $search-placeholder-color;
+    color: variables.$search-placeholder-color;
   }
   
   &__search-icon {
@@ -42,17 +42,17 @@
     order:0;
     display:block;
     margin-right:0.5em;
-    color: $search-icon-color;
+    color: variables.$search-icon-color;
   }
 
   &__clear-icon {
     box-sizing: border-box;
     &:hover {
-      color: $search-clear-icon-color-hover;
+      color: variables.$search-clear-icon-color-hover;
       cursor: pointer;
     }
     order: 2;
-    color: $search-clear-icon-color;
+    color: variables.$search-clear-icon-color;
     visibility:hidden;
     
     &--active {
@@ -61,9 +61,9 @@
   }
   
   &--disabled {
-    opacity: $search-disabled-opacity;
-    color: $search-disabled-color;
-    background-color: $search-disabled-bg-color;
+    opacity: variables.$search-disabled-opacity;
+    color: variables.$search-disabled-color;
+    background-color: variables.$search-disabled-bg-color;
   }
   
 }

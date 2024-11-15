@@ -1,17 +1,17 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-input-toolbox {
+.#{variables.$prefix}-input-toolbox {
   box-sizing: border-box;
-  @include flex-row;
+  @include mixins.flex-row;
   justify-content: flex-end;
-  margin: $input-toolbox-margin;
-  padding: $input-toolbox-padding;
+  margin: variables.$input-toolbox-margin;
+  padding: variables.$input-toolbox-padding;
 
-  & .#{$prefix}-button {
-    @include reset-button;
-    margin: $input-toolbox-btn-margin;
-    font-size: $input-toolbox-btn-font-size;
+  & .#{variables.$prefix}-button {
+    @include mixins.reset-button;
+    margin: variables.$input-toolbox-btn-margin;
+    font-size: variables.$input-toolbox-btn-font-size;
   }
   
 }

@@ -1,73 +1,73 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
 
 // Positions
 $_message-group-avatar-justify-content: flex-end;
 
 /********** Styles **********/
-.#{$prefix}-message-group {
+.#{variables.$prefix}-message-group {
   
   // Local alias
   $group-class: &;
-  $message-class: #{$prefix}-message;
-  $avatar-class: #{$prefix}-avatar;
+  $message-class: #{variables.$prefix}-message;
+  $avatar-class: #{variables.$prefix}-avatar;
 
   box-sizing: border-box;
-  @include flex-row;
-  margin: $message-group-margin;
+  @include mixins.flex-row;
+  margin: variables.$message-group-margin;
   
   &__avatar {
     box-sizing: border-box;
-    @include flex-column;
+    @include mixins.flex-column;
     justify-content: $_message-group-avatar-justify-content;
   }
   
   // Container for header, message and footer
   &__content {
     box-sizing: border-box;
-    @include flex-column;
+    @include mixins.flex-column;
   }
   
   &__header {
     box-sizing: border-box;
     display:flex;
-    font-size: $message-group-header-font-size;
-    font-family: $message-group-header-font-family;
-    color: $message-group-header-color;
-    background-color: $message-group-header-bg-color;
-    margin: $message-group-header-margin;
-    padding: $message-group-header-padding;
+    font-size: variables.$message-group-header-font-size;
+    font-family: variables.$message-group-header-font-family;
+    color: variables.$message-group-header-color;
+    background-color: variables.$message-group-header-bg-color;
+    margin: variables.$message-group-header-margin;
+    padding: variables.$message-group-header-padding;
   }
   
   &__footer {
     box-sizing: border-box;
     display:flex;
-    font-size: $message-group-footer-font-size;
-    font-family: $message-group-footer-font-family;
-    color: $message-group-footer-color;
-    background-color: $message-group-footer-bg-color;
-    margin: $message-group-footer-margin;
-    padding: $message-group-footer-padding;
+    font-size: variables.$message-group-footer-font-size;
+    font-family: variables.$message-group-footer-font-family;
+    color: variables.$message-group-footer-color;
+    background-color: variables.$message-group-footer-bg-color;
+    margin: variables.$message-group-footer-margin;
+    padding: variables.$message-group-footer-padding;
   }
   
   &__messages {
     box-sizing: border-box;
     // First message in group
-    .#{$prefix}-message:first-child {
+    .#{variables.$prefix}-message:first-child {
       margin-top:0;
     }
 
     // Every message in group
-    .#{$prefix}-message {
+    .#{variables.$prefix}-message {
       .#{$message-class}__content {
-        background-color: $message-group-message-content-bg-color;
+        background-color: variables.$message-group-message-content-bg-color;
         margin-top:0;
       }
     }
     
     // Last message in group
-    .#{$prefix}-message:last-child {
+    .#{variables.$prefix}-message:last-child {
 
     }
 
@@ -90,25 +90,25 @@ $_message-group-avatar-justify-content: flex-end;
       
       // First message in incoming group
       & .#{$message-class}:first-child .#{$message-class}__content {
-        border-radius: $message-group-incoming-message-content-first-border-radius;
+        border-radius: variables.$message-group-incoming-message-content-first-border-radius;
       }
 
       // Message in incoming group
       & .#{$message-class} .#{$message-class}__content {
-        border-radius: $message-group-incoming-message-content-border-radius;
-        color: $message-group-message-content-incoming-color;
-        background-color: $message-group-message-content-incoming-bg-color;
+        border-radius: variables.$message-group-incoming-message-content-border-radius;
+        color: variables.$message-group-message-content-incoming-color;
+        background-color: variables.$message-group-message-content-incoming-bg-color;
       }
       
       // Last message in incoming group
       & .#{$message-class}:last-child .#{$message-class}__content {
-        border-radius: $message-group-incoming-message-content-last-border-radius;
+        border-radius: variables.$message-group-incoming-message-content-last-border-radius;
       }
 
       // Single message in incoming group
       // !!! only-child must be placed after last-child
-      .#{$prefix}-message:only-child .#{$message-class}__content {
-        border-radius: $message-group-incoming-message-content-single-border-radius;
+      .#{variables.$prefix}-message:only-child .#{$message-class}__content {
+        border-radius: variables.$message-group-incoming-message-content-single-border-radius;
       }
       
     }
@@ -137,25 +137,25 @@ $_message-group-avatar-justify-content: flex-end;
       
       // First message in outgoing group
       & .#{$message-class}:first-child .#{$message-class}__content {
-        border-radius: $message-group-outgoing-message-content-first-border-radius;
+        border-radius: variables.$message-group-outgoing-message-content-first-border-radius;
       }
 
       // Message in outgoing group
       & .#{$message-class} .#{$message-class}__content {
-        border-radius: $message-group-outgoing-message-content-border-radius;
-        color: $message-group-message-content-outgoing-color;
-        background-color: $message-group-message-content-outgoing-bg-color;
+        border-radius: variables.$message-group-outgoing-message-content-border-radius;
+        color: variables.$message-group-message-content-outgoing-color;
+        background-color: variables.$message-group-message-content-outgoing-bg-color;
       }
 
       // Last message in outgoing group
       & .#{$message-class}:last-child .#{$message-class}__content {
-        border-radius: $message-group-outgoing-message-content-last-border-radius;
+        border-radius: variables.$message-group-outgoing-message-content-last-border-radius;
       }
 
       // Single message in outgoing group
       // !!! only-child must be placed after last-child
-      .#{$prefix}-message:only-child .#{$message-class}__content {
-        border-radius: $message-group-outgoing-message-content-single-border-radius;
+      .#{variables.$prefix}-message:only-child .#{$message-class}__content {
+        border-radius: variables.$message-group-outgoing-message-content-single-border-radius;
       }
 
     }
@@ -169,7 +169,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: flex-start;
       order:0;
-      margin-right: $message-group-avatar-horizontal-margin;
+      margin-right: variables.$message-group-avatar-horizontal-margin;
       margin-left:0;
     }
     
@@ -182,7 +182,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: flex-start;
       order:1;
-      margin-left: $message-group-avatar-horizontal-margin;
+      margin-left: variables.$message-group-avatar-horizontal-margin;
       margin-right:0;
     }
 
@@ -195,7 +195,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: flex-end;
       order:0;
-      margin-right: $message-group-avatar-horizontal-margin;
+      margin-right: variables.$message-group-avatar-horizontal-margin;
       margin-left:0;
     }
 
@@ -208,7 +208,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: flex-end;
       order:1;
-      margin-left: $message-group-avatar-horizontal-margin;
+      margin-left: variables.$message-group-avatar-horizontal-margin;
       margin-right:0;
     }
     
@@ -222,7 +222,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: center;
       order:0;
-      margin-right: $message-group-avatar-horizontal-margin;
+      margin-right: variables.$message-group-avatar-horizontal-margin;
       margin-left:0;
     }
 
@@ -235,7 +235,7 @@ $_message-group-avatar-justify-content: flex-end;
     #{$group-class}__avatar {
       justify-content: center;
       order:1;
-      margin-left: $message-group-avatar-horizontal-margin;
+      margin-left: variables.$message-group-avatar-horizontal-margin;
       margin-right:0;
     }
 

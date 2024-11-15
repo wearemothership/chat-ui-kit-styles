@@ -1,9 +1,11 @@
+@use "sass:color";
+
 @function rgba-to-rgb($rgba, $background: #fff) {
-  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%)
+  @return color.mix(rgb(color.channel($rgba, "red"), color.channel($rgba, "green"), color.channel($rgba, "blue")), $background, color.alpha($rgba) * 100%)
 }
 
 @function color-by-background($bg-color, $text-color, $inverted-text-color) {
-  @if (lightness( $bg-color ) > 40) {
+  @if (color.channel(color.to-space($bg-color, hsl), "lightness") > 40) {
     @return $text-color;
   }
   @else {

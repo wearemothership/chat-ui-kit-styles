@@ -2,7 +2,8 @@
 //
 //
 
-@import "helpers/functions";
+@use "./helpers/functions";
+@use "sass:color";
 
 // Main class prefix
 $prefix: "cs" !default;
@@ -44,7 +45,7 @@ $color-secondary-dark: #64D3D3 !default;
 $color-text: rgba(0, 0, 0, .87) !default; // #212121
 $color-text-medium: rgba(0, 0, 0, .60) !default; // #666666
 $color-text-disabled: rgba(0, 0, 0, .38) !default; // #9e9e9e
-$color-text-inverted: invert($color-text); 
+$color-text-inverted: color.invert($color-text); 
 
 // Base colors
 //
@@ -57,18 +58,18 @@ $default-bg-color: $color-white !default;
 // Element colors
 //
 
-$default-border-color: rgba-to-rgb(rgba(scale-color($color-primary-dark, $saturation: -55%), 0.4), $default-bg-color) !default;
+$default-border-color: functions.rgba-to-rgb(rgba(color.scale($color-primary-dark, $saturation: -55%), 0.4), $default-bg-color) !default;
 
 // State colors
 //
 
 $color-hover: $color-text !default;
-$color-bg-hover: rgba-to-rgb(rgba($color-primary-dark, 0.08), $default-bg-color) !default;
+$color-bg-hover: functions.rgba-to-rgb(rgba($color-primary-dark, 0.08), $default-bg-color) !default;
 $color-focus: $color-text !default;
-$color-bg-focus: rgba-to-rgb(rgba($color-primary-dark, 0.24), $color-primary-light) !default;
-$color-selected: darken($color-primary-dark, 25%) !default;
+$color-bg-focus: functions.rgba-to-rgb(rgba($color-primary-dark, 0.24), $color-primary-light) !default;
+$color-selected: color.adjust($color-primary-dark, $lightness: -25%) !default;
 $color-bg-selected: $color-bg-focus !default;
-$color-activated: darken($color-primary-dark, 25%)  !default;
+$color-activated: color.adjust($color-primary-dark, $lightness: -25%)  !default;
 $color-bg-activated: $color-bg-focus !default;
 $color-active: $color-primary-dark !default;
 $color-bg-active: $color-bg-activated !default;
@@ -267,10 +268,10 @@ $conversation-header-border-left: solid 0px $default-border-color !default;
 
 // Colors
 $conversation-header-bg-color: $color-primary-light !default;
-$conversation-header-color: color-by-background($conversation-header-bg-color, $color-text, $color-text-inverted) !default;
+$conversation-header-color: functions.color-by-background($conversation-header-bg-color, $color-text, $color-text-inverted) !default;
 $conversation-header-user-name-color: $conversation-header-color !default;
 $conversation-header-user-name-bg-color: $conversation-header-bg-color !default;
-$conversation-header-info-color: color-by-background($conversation-header-bg-color, $color-text-medium, $color-text-inverted) !default;
+$conversation-header-info-color: functions.color-by-background($conversation-header-bg-color, $color-text-medium, $color-text-inverted) !default;
 $conversation-header-info-bg-color: $conversation-header-bg-color !default;
 $conversation-header-action-button-color: normal !default;
 $conversation-header-action-button-bg-color: transparent !default;
@@ -489,10 +490,10 @@ $message-outgoing-content-last-border-radius: $message-base-radius 0 $message-ba
 $message-color: $color-text !default;
 $message-bg-color: transparent !default;
 
-$message-header-color: lighten($color-text, 30) !default;
+$message-header-color: color.adjust($color-text, $lightness: 30%) !default;
 $message-header-bg-color: transparent !default;
 
-$message-footer-color: lighten($color-text, 30) !default;
+$message-footer-color: color.adjust($color-text, $lightness: 30%) !default;
 $message-footer-bg-color: transparent !default;
 
 $message-incoming-color: $message-color !default;

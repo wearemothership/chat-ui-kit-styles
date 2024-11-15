@@ -1,15 +1,15 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-message-list {
+.#{variables.$prefix}-message-list {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   overflow: hidden;
   min-height: 1em + (1em * 0.25); // Place for typing indicator
   position: relative;
-  color: $message-list-color;
-  background-color: $message-list-bg-color;
+  color: variables.$message-list-color;
+  background-color: variables.$message-list-bg-color;
 
   &__scroll-wrapper {
     box-sizing: border-box;
@@ -20,7 +20,7 @@
     bottom: 0;
     overflow: hidden;
     /*overflow-y: scroll*/; // TODO: Uncomment this when not using fancy scroll
-    padding: $message-list-scroll-wrapper-padding;
+    padding: variables.$message-list-scroll-wrapper-padding;
   }
 
   // Scroll-to point for sticky scroll
@@ -34,22 +34,22 @@
   // Last message must have place for typing indicator when scrolled down to be able to read last message
   // TODO: If fancy scroll is not used it should be nth-last-child(2).
   //  Value 4 is set because PerfectScrollbar ads two divs at the end of container 
-  &__scroll-wrapper > .#{$prefix}-message:nth-last-child(4) {
+  &__scroll-wrapper > .#{variables.$prefix}-message:nth-last-child(4) {
     margin-bottom: 1.4em + (1em * 0.25) + 1em;
   }
 
-  &__scroll-wrapper > .#{$prefix}-message-group:nth-last-child(4) {
+  &__scroll-wrapper > .#{variables.$prefix}-message-group:nth-last-child(4) {
     margin-bottom: 1.4em + (1em * 0.25) + 1em;
   }
   
   // Typing indicator (when exists)
-  & .#{$prefix}-typing-indicator {
+  & .#{variables.$prefix}-typing-indicator {
     position: absolute;
     bottom: 0;
     left: 0;
     // !!!! TODO: set to 20px when not using fancy scroll
     right: 15px; 
-    background-color: $message-list-typing-indicator-bg-color;
+    background-color: variables.$message-list-typing-indicator-bg-color;
     padding: 0.5em 0.5em;
     font-size: 0.9em;
     height: 1em + (1em * 0.25);
@@ -57,47 +57,47 @@
   }
   
   // Because message in group cant have max-width, only if its direct child of list
-  &__scroll-wrapper > .#{$prefix}-message,
-  &__scroll-wrapper > .#{$prefix}-message-group
+  &__scroll-wrapper > .#{variables.$prefix}-message,
+  &__scroll-wrapper > .#{variables.$prefix}-message-group
   {
     max-width: 85%;
   }
 
-  & .#{$prefix}-message.#{$prefix}-message--incoming,
-  & .#{$prefix}-message-group.#{$prefix}-message-group--incoming,
+  & .#{variables.$prefix}-message.#{variables.$prefix}-message--incoming,
+  & .#{variables.$prefix}-message-group.#{variables.$prefix}-message-group--incoming,
   {
     margin-right: auto;
   }
   
-  & .#{$prefix}-message.#{$prefix}-message--outgoing,
-  & .#{$prefix}-message-group.#{$prefix}-message-group--outgoing,
+  & .#{variables.$prefix}-message.#{variables.$prefix}-message--outgoing,
+  & .#{variables.$prefix}-message-group.#{variables.$prefix}-message-group--outgoing,
   {
     margin-left: auto;
   }
 
-  & .#{$prefix}-message-separator:not(:first-child) {
-    margin-top: $message-list-message-separator-margin-top;
+  & .#{variables.$prefix}-message-separator:not(:first-child) {
+    margin-top: variables.$message-list-message-separator-margin-top;
   }
 
   &__loading-more {
     box-sizing: content-box;
-    @include flex-row;
+    @include mixins.flex-row;
     justify-content: center;
     position:absolute;
-    background-color: $message-list-loading-more-bg-color;
-    padding: $message-list-loading-more-padding;
+    background-color: variables.$message-list-loading-more-bg-color;
+    padding: variables.$message-list-loading-more-padding;
     top:0;
     left:0;
     right:0;
-    height: $message-list-loading-more-height;
+    height: variables.$message-list-loading-more-height;
     z-index: 1;
 
-    .#{$prefix}-loader {
-      width:$message-list-loading-more-height;
-      height:$message-list-loading-more-height;
+    .#{variables.$prefix}-loader {
+      width:variables.$message-list-loading-more-height;
+      height:variables.$message-list-loading-more-height;
     }
-    .#{$prefix}-loader::before,
-    .#{$prefix}-loader::after
+    .#{variables.$prefix}-loader::before,
+    .#{variables.$prefix}-loader::after
     {
       width:100%;
       height:100%;

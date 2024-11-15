@@ -1,54 +1,54 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
 // Overflows
 $_message-input-overflow: visible;
 $_message-input-content-editor-overflow: visible;
 
 // Don to override this value (no !default)
-$_message-input-content-editor-border-vertical-width: $message-input-content-editor-border-top-width + $message-input-content-editor-border-bottom-width;
+$_message-input-content-editor-border-vertical-width: variables.$message-input-content-editor-border-top-width + variables.$message-input-content-editor-border-bottom-width;
 // Don to override this value (no !default)
-$_message-input-content-editor-border-horizontal-width: $message-input-content-editor-border-left-width + $message-input-content-editor-border-right-width;
+$_message-input-content-editor-border-horizontal-width: variables.$message-input-content-editor-border-left-width + variables.$message-input-content-editor-border-right-width;
 
 // Calculated - do not override
-$_message-input-content-editor-padding-vertical: $message-input-content-editor-container-padding-top + $message-input-content-editor-container-padding-bottom;
-$_message-input-content-editor-padding-horizontal: $message-input-content-editor-container-padding-left + $message-input-content-editor-container-padding-right;
+$_message-input-content-editor-padding-vertical: variables.$message-input-content-editor-container-padding-top + variables.$message-input-content-editor-container-padding-bottom;
+$_message-input-content-editor-padding-horizontal: variables.$message-input-content-editor-container-padding-left + variables.$message-input-content-editor-container-padding-right;
 
 // Calculated - do not override
-$_message-input-content-editor-container-min-height: $message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
+$_message-input-content-editor-container-min-height: variables.$message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
 
 // Calculated - do not override
-$_message-input-content-editor-container-max-height: $message-input-max-lines * $message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
+$_message-input-content-editor-container-max-height: variables.$message-input-max-lines * variables.$message-input-content-editor-container-line-height + $_message-input-content-editor-padding-vertical + $_message-input-content-editor-border-vertical-width;
 
-.#{$prefix}-message-input {
+.#{variables.$prefix}-message-input {
 
   // Local alias
   $message-input-class: &;
   
-  @include flex-row;
+  @include mixins.flex-row;
   position: relative;
-  background-color: $message-input-bg-color;
-  border-top: $message-input-border-top;
-  border-right: $message-input-border-right;
-  border-bottom: $message-input-border-bottom;
-  border-left: $message-input-border-left;
+  background-color: variables.$message-input-bg-color;
+  border-top: variables.$message-input-border-top;
+  border-right: variables.$message-input-border-right;
+  border-bottom: variables.$message-input-border-bottom;
+  border-left: variables.$message-input-border-left;
   box-sizing: border-box;
-  padding: $message-input-padding;
+  padding: variables.$message-input-padding;
   overflow: $_message-input-overflow;
   flex-shrink: 0;
 
   &__content-editor-wrapper {
     box-sizing: border-box;  
     position: relative;
-    background-color: $message-input-content-editor-wrapper-bg-color;
-    margin: $message-input-content-editor-wrapper-margin;
-    padding: $message-input-content-editor-wrapper-padding;
-    border-radius: $message-input-content-editor-wrapper-border-radius;
+    background-color: variables.$message-input-content-editor-wrapper-bg-color;
+    margin: variables.$message-input-content-editor-wrapper-margin;
+    padding: variables.$message-input-content-editor-wrapper-padding;
+    border-radius: variables.$message-input-content-editor-wrapper-border-radius;
     flex-grow:1;
 
     #{$message-input-class}--disabled & {
-      background-color: $message-input-content-editor-disabled-bg-color;
-      color: $message-input-content-editor-disabled-color;
+      background-color: variables.$message-input-content-editor-disabled-bg-color;
+      color: variables.$message-input-content-editor-disabled-color;
     }
     
   }
@@ -56,20 +56,20 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
   &__content-editor-container {
     box-sizing: border-box;
     position:relative;
-    background-color: $message-input-content-editor-container-bg-color;
-    @include flex-column;
+    background-color: variables.$message-input-content-editor-container-bg-color;
+    @include mixins.flex-column;
     align-items: stretch;
     overflow:hidden;
     overflow-y:auto;
-    font-size: $message-input-content-editor-container-font-size;
-    line-height: $message-input-content-editor-container-line-height;
+    font-size: variables.$message-input-content-editor-container-font-size;
+    line-height: variables.$message-input-content-editor-container-line-height;
     min-height: $_message-input-content-editor-container-min-height;
     max-height: $_message-input-content-editor-container-max-height;
-    padding: $message-input-content-editor-container-padding;
-    scroll-padding: $message-input-content-editor-container-padding-bottom;
+    padding: variables.$message-input-content-editor-container-padding;
+    scroll-padding: variables.$message-input-content-editor-container-padding-bottom;
     
     #{$message-input-class}--disabled & {
-      color: $message-input-content-editor-disabled-color;
+      color: variables.$message-input-content-editor-disabled-color;
       background-color: transparent;
     }
   }
@@ -77,20 +77,20 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
   &__content-editor {
     box-sizing: border-box;
     flex-grow:1;
-    background-color: $message-input-content-editor-bg-color;
-    font-family: $message-input-content-editor-font-family;
+    background-color: variables.$message-input-content-editor-bg-color;
+    font-family: variables.$message-input-content-editor-font-family;
     outline: 0;
-    border-top: $message-input-content-editor-border-top;
-    border-right: $message-input-content-editor-border-right;
-    border-bottom: $message-input-content-editor-border-bottom;
-    border-left: $message-input-content-editor-border-left;
+    border-top: variables.$message-input-content-editor-border-top;
+    border-right: variables.$message-input-content-editor-border-right;
+    border-bottom: variables.$message-input-content-editor-border-bottom;
+    border-left: variables.$message-input-content-editor-border-left;
     overflow: $_message-input-content-editor-overflow;
-    color: $message-input-content-editor-color;
+    color: variables.$message-input-content-editor-color;
     overflow-wrap: anywhere;
     word-break: break-word;
     #{$message-input-class}--disabled & {
       background-color: transparent; // Because bg color is from parent and we are using alpha
-      color: $message-input-content-editor-disabled-color;
+      color: variables.$message-input-content-editor-disabled-color;
     }
     
   }
@@ -98,44 +98,44 @@ $_message-input-content-editor-container-max-height: $message-input-max-lines * 
   &__content-editor[data-placeholder]:empty:before {
     box-sizing: border-box;
     content: attr(data-placeholder);
-    color: $message-input-placeholder-color;
+    color: variables.$message-input-placeholder-color;
     display: block;
     cursor:text;
   }
   
   &__tools {
-    @include flex-row;
+    @include mixins.flex-row;
     box-sizing: border-box;
-    .#{$prefix}-button {
+    .#{variables.$prefix}-button {
       font-size:1.2em;
       margin-top:0;
       margin-bottom:0;
     }
     
-    .#{$prefix}-button--send {
+    .#{variables.$prefix}-button--send {
       align-self: flex-end;
     }
 
-    .#{$prefix}-button--attachment {
+    .#{variables.$prefix}-button--attachment {
       align-self: flex-end;
     }
     
   }
 
   &__tools:first-child {
-    .#{$prefix}-button:first-child {
+    .#{variables.$prefix}-button:first-child {
       margin-left: 0;
     }
-    .#{$prefix}-button:last-child {
+    .#{variables.$prefix}-button:last-child {
       margin-right: 0;
     }
   }
 
   &__tools:last-child {
-    .#{$prefix}-button:first-child {
+    .#{variables.$prefix}-button:first-child {
       margin-left: 0;
     }
-    .#{$prefix}-button:last-child {
+    .#{variables.$prefix}-button:last-child {
       margin-right: 0;
     }
   }

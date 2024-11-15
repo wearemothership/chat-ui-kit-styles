@@ -1,16 +1,16 @@
-@import "../variables";
-@import "../helpers/mixins";
+@use "../variables";
+@use "../helpers/mixins";
 
-.#{$prefix}-status-list {
+.#{variables.$prefix}-status-list {
   
-  $status-class: #{$prefix}-status;
+  $status-class: #{variables.$prefix}-status;
 
   box-sizing: border-box;
   list-style-type: none;
-  margin: $status-list-margin;
-  padding: $status-list-padding;
-  color: $status-list-color;
-  background-color: $status-list-bg-color;
+  margin: variables.$status-list-margin;
+  padding: variables.$status-list-padding;
+  color: variables.$status-list-color;
+  background-color: variables.$status-list-bg-color;
   
   > li {
     box-sizing: border-box;
@@ -19,44 +19,44 @@
 
     > .#{$status-class} {
 
-      margin: $status-list-item-margin;
-      padding: $status-list-item-padding;
+      margin: variables.$status-list-item-margin;
+      padding: variables.$status-list-item-padding;
       width:auto;
       height:auto;
 
     }
 
     .#{$status-class}--selected {
-      color: $status-list-item-selected-color;
-      background-color: $status-list-item-selected-bg-color;
+      color: variables.$status-list-item-selected-color;
+      background-color: variables.$status-list-item-selected-bg-color;
 
       .#{$status-class}__name {
-        color: $status-list-item-selected-color;
-        background-color: $status-list-item-selected-bg-color;
+        color: variables.$status-list-item-selected-color;
+        background-color: variables.$status-list-item-selected-bg-color;
       }
       
     }
   
     &:hover {
-      color: $status-list-item-hover-color;
-      background-color: $status-list-item-hover-bg-color;  
+      color: variables.$status-list-item-hover-color;
+      background-color: variables.$status-list-item-hover-bg-color;  
     }
     
     &:focus {
-      color: $status-list-item-focus-color;
-      background-color: $status-list-item-focus-bg-color;
+      color: variables.$status-list-item-focus-color;
+      background-color: variables.$status-list-item-focus-bg-color;
     }
     
     &:active {
-      color: $status-list-item-active-color;
-      background-color: $status-list-item-active-bg-color;
+      color: variables.$status-list-item-active-color;
+      background-color: variables.$status-list-item-active-bg-color;
     }
   }
   
   &--xs {
     >  li  {
       > .#{$status-class} {
-        @include status-size("xs", $named: true);
+        @include mixins.status-size("xs", $named: true);
       }
     }
   }
@@ -64,7 +64,7 @@
   &--sm {
     >  li  {
       > .#{$status-class} {
-        @include status-size("sm", $named: true);
+        @include mixins.status-size("sm", $named: true);
       }
     }
   }
@@ -72,7 +72,7 @@
   &--md {
     >  li  {
       > .#{$status-class} {
-        @include status-size("md", $named: true);
+        @include mixins.status-size("md", $named: true);
       }
     }
   }
@@ -81,7 +81,7 @@
   &--lg {
     >  li  {
       > .#{$status-class} {
-        @include status-size("lg", $named: true);
+        @include mixins.status-size("lg", $named: true);
       }
     }
   }
