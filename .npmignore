@@ -1,5 +1,5 @@
 .idea
+.husky
 node_modules
 yarn_error.log
-dist
 yarn-error.log
