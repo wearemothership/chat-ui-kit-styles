@@ -34,15 +34,12 @@
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
-    "@semantic-release/changelog": "6.0.3",
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "11.0.1",
     "autoprefixer": "10.4.20",
     "chokidar-cli": "3.0.0",
     "husky": "9.1.6",
-    "postcss-cli": "11.0.0",
+    "postcss": "^8",
+    "postcss-cli": "^11.0.0",
     "sass-embedded": "^1.81.0",
-    "semantic-release": "24.2.0",
     "stylelint": "^16.10.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
@@ -53,7 +50,8 @@
     "build": "npm run build:clean && npm run build:sass && npm run build:autoprefixer",
     "pack": "yarn pack",
     "watch": "chokidar 'themes/**/*.scss' -c 'npm run build:sass && npm run build:autoprefixer'",
-    "prepare": "husky"
+    "prepare": "husky",
+	"predeploy": "npm run build"
   },
   "files": [
     "dist",
@@ -62,46 +60,5 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "release": {
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": [
-            {
-              "type": "docs",
-              "scope": "readme",
-              "release": "patch"
-            },
-            {
-              "scope": "no-release",
-              "release": false
-            }
-          ]
-        }
-      ],
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "CHANGELOG.md",
-          "changelogTitle": "# @wearemothership/chat-ui-kit-styles changelog"
-        }
-      ],
-      "@semantic-release/github",
-      "@semantic-release/npm",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "package.json",
-            "CHANGELOG.md"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ]
-    ]
   }
 }
